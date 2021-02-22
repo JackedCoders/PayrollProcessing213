@@ -9,7 +9,7 @@ public class Profile {
         return this.name;
     }
 
-
+    public Date getDateHired() { return dateHired; }
 
     @Override
     public String toString() { return null; }
@@ -25,7 +25,9 @@ public class Profile {
         if(!name.equals(newProfile.getName())){
             return false;
         }
-
+        if(dateHired != newProfile.getDateHired()){
+            return false;
+        }
 
         return true;
     }

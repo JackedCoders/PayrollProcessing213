@@ -14,7 +14,6 @@ public class Date implements Comparable<Date> {
          */
 
         String [] tokens = date.split("/");
-        if(tokens.length != 3){ throw new NumberFormatException(); }
         this.month = Integer.valueOf(tokens[0]);
         this.day = Integer.valueOf(tokens[1]);
         this.year = Integer.valueOf(tokens[2]);
