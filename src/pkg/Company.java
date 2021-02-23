@@ -1,11 +1,35 @@
 package pkg;
 
 public class Company {
-    private Employee[] emplist; private int numEmployee;
+    private Employee [] emplist;
+    private int numEmployee;
+    private int find(Employee employee){
+            return 0;
+    }
+    private void grow(){
+        Employee [] newList = new Employee[emplist.length+4];
+        for(int i =0; i< emplist.length; i++){
+            newList[i] = emplist[i];
+        }
+        this.emplist = newList;
+    }
+    public boolean add(Employee employee){
+        
+        return true;
+    }
+    public boolean remove(Employee employee){
+        return true;
+    }
+    public boolean setHours(Employee employee){return true;}
+    public void processPayments(){
+            
+    }
+    public void print(){}
+    public void printByDepartment(){}
+    public void printByDate(){
 
-    private int find(Employee employee) { return 0; }
-    private void grow() { }
-    public boolean add(Employee employee) { return false; } //check the profile before adding public boolean remove(Employee employee) { } //maintain the original sequence public boolean setHours(Employee employee) { } //set working hours for a part time public void processPayments() { } //process payments for all employees
-    public void print() { } //print earning statements for all employees
-    public void printByDepartment() { } //print earning statements by department public void printByDate() { } //print earning statements by date hired
+    }
+
+
+
 }

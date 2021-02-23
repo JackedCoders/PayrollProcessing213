@@ -19,11 +19,21 @@ public class PayrollProcessing {
                 continue;
             }
 
-            else if(tokens[0].equals("AM") || tokens[0].equals("AP") || tokens.equals("AF")){
+            else if(tokens[0].equals("AM") || tokens[0].equals("AP") || tokens[0].equals("AF")){
 
             }
+            
+            // Input is Remove
+            else if(tokens[0].equals("R")){
 
-            // Input is "Q"
+            }
+            
+            // Input is Calculate
+            else if(input.equals("C")){
+                calculatePayments();
+            }
+
+            // Input is Quit
             else if(input.equals("Q")){
                 System.out.println("Payroll Processing completed.");
                 break;
@@ -42,7 +52,12 @@ public class PayrollProcessing {
 
     }
 
-    public void invalidCommand(String input){
+    private void calculatePayments(){
+
+    }
+
+
+    private void invalidCommand(String input){
         System.out.println("Command '"+input+"' not supported!");
     }
 }
