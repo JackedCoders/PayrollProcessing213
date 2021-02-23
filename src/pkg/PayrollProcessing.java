@@ -84,6 +84,22 @@ public class PayrollProcessing {
 
 
     private void invalidCommand(String input){
+
         System.out.println("Command '"+input+"' not supported!");
+    }
+
+    private boolean validDepartment(String department){
+
+        if(department.equals("CS") || department.equals("ECE") || department.equals("IT")){
+            return true;
+        }
+        return false;
+    }
+
+    private boolean validDate(Date date){
+        if(date.isValid()) {
+            return true;
+        }
+        return false;
     }
 }

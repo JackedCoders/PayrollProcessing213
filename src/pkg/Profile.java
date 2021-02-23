@@ -35,7 +35,7 @@ public class Profile {
         if(!department.equals(newProfile.getDepartment())){
             return false;
         }
-        if(dateHired != newProfile.getDateHired()){
+        if(dateHired.compareTo(newProfile.getDateHired()) != 0){
             return false;
         }
 
