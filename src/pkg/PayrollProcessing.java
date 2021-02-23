@@ -23,10 +23,12 @@ public class PayrollProcessing {
 
             // Input is Add
             else if(tokens[0].equals("AM") || tokens[0].equals("AP") || tokens[0].equals("AF")){
+                char type = tokens[0].charAt(0);
                 String name = tokens[1];
                 String department = tokens[2];
                 String date = tokens[3];
                 Double payRate = Double.parseDouble(tokens[4]);
+
             }
             
             // Input is Remove
@@ -39,6 +41,14 @@ public class PayrollProcessing {
             // Input is Calculate
             else if(input.equals("C")){
                 calculatePayments();
+            }
+
+            // Input is Set Hours
+            else if(tokens[0].equals("S")){
+                String name = tokens[0];
+                String department = tokens[1];
+                String date = tokens[2];
+
             }
 
             // Input is Quit
@@ -55,8 +65,12 @@ public class PayrollProcessing {
         }
     }
 
-    private void addEmployee(String input){
+    private void addEmployee(String name, String department, String date, Double payRate){
 
+
+    }
+
+    private void addManager(){
 
     }
 

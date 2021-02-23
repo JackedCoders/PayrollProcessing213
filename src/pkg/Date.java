@@ -64,10 +64,64 @@ public class Date implements Comparable<Date> {
         return 0;
     }
 
+    public boolean isValid() {
+        if(year < 1900 || year > 2021){
+            return false;
+        }
+        boolean isLeapYear = isLeapYear(year);
+        Date today = new Date();
+        if(this.compareTo(today) > 0){
+            return false;
+        }
+
+        if(month < 1 || month > 12){
+            return false;
+        }
+        if(month == 2){
+            if(isLeapYear){
+                if(day < 1 || day > 29){
+                    return false;
+                }
+            }else{
+                if(day < 1 || day > 28){
+                    return false;
+                }
+            }
+        }
+        if(month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12){
+            if(day < 1 || day > 31){
+                return false;
+            }
+        }else{
+            if(day < 1 || day > 30){
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    private boolean isLeapYear(int year){
+        if(year < 1 || year > 9999){
+            return false;
+        }
+        if(year % 4 == 0){
+            if(year % 100 == 0){
+                if(year % 400 == 0){
+                    return true;
+                }
+            }else{
+                return true;
+            }
+        }
+        return false;
+    }
+
     public static void main(String[] args){
 
         //Test bed for Date
-        
+        Date date1 = new Date("2/21/2021");
+        System.out.println(date1.isValid());
     }
 
 }

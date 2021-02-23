@@ -16,6 +16,11 @@ public class Employee {
 
     @Override
     public boolean equals(Object obj){
-        return false;
+        Employee newEmployee = (Employee) obj;
+
+        if(!employeeProfile.equals(newEmployee)){
+            return false;
+        }
+        return true;
     }
 }
