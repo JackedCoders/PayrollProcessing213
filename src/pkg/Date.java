@@ -64,5 +64,10 @@ public class Date implements Comparable<Date> {
         return 0;
     }
 
+    public static void main(String[] args){
+
+        //Test bed for Date
+        
+    }
 
 }

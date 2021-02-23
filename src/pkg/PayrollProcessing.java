@@ -6,6 +6,8 @@ public class PayrollProcessing {
 
     public void run(){
 
+        Company newCompany = new Company();
+
         Scanner inputScanner = new Scanner(System.in);
 
         String input = "";
@@ -19,13 +21,19 @@ public class PayrollProcessing {
                 continue;
             }
 
+            // Input is Add
             else if(tokens[0].equals("AM") || tokens[0].equals("AP") || tokens[0].equals("AF")){
-
+                String name = tokens[1];
+                String department = tokens[2];
+                String date = tokens[3];
+                Double payRate = Double.parseDouble(tokens[4]);
             }
             
             // Input is Remove
             else if(tokens[0].equals("R")){
-
+                String name = tokens[1];
+                String department = tokens[2];
+                String date = tokens[3];
             }
             
             // Input is Calculate
@@ -49,6 +57,10 @@ public class PayrollProcessing {
 
     private void addEmployee(String input){
 
+
+    }
+
+    private void removeEmployee(){
 
     }
 
