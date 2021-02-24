@@ -86,6 +86,12 @@ public class Company {
     * @return false if setHours() fails, true if setHours() succeeds
     */
     public boolean setHours(Employee employee, int hoursWorked){
+        int index = find(employee);
+        if(index == -1){
+            return false;
+        }
+
+        
         return true;
     }
 

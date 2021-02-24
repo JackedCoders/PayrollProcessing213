@@ -24,7 +24,7 @@ public class Fulltime extends Employee{
      */
     @Override
     public String toString(){
-        return null;
+        return super.toString();
     }
 
     /**
