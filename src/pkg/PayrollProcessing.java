@@ -112,18 +112,28 @@ public class PayrollProcessing {
                     continue;
                 }
 
-                String name = tokens[0];
-                String department = tokens[1];
+                String name = tokens[1];
+                String department = tokens[2];
                 if(!validateDepartment(department)){
                     continue;
                 }
-                Date dateHired = validateDate(tokens[2]);
+                Date dateHired = validateDate(tokens[3]);
                 if(dateHired == null){
                     continue;
                 }
+                int hours = -1;
+                try{
+                    hours = Integer.parseInt(tokens[4]);
+                }catch(Exception e){
+                    invalidCommand(input);
+                    continue;
+                }     
+                if(!validateHours(hours)){
+                    continue;
+                }
 
-
-                
+                //Profile setProfile = new Profile(name, department, dateHired);
+                //int index = newCompany.find(new Pa)
 
             }
 
@@ -245,5 +255,17 @@ public class PayrollProcessing {
             System.out.println("Invalid management code.");
             return false;
         }
+    }
+
+    private boolean validateHours (int hours){
+        if(hours < 0){
+            System.out.println("Working hours cannot be negative.");
+            return false;
+        }
+        if(hours > 100){
+            System.out.println("Invalid Hours: over 100.");
+            return false;
+        }
+        return true;
     }
 }

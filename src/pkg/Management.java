@@ -16,14 +16,21 @@ public class Management extends Fulltime{
      */
     public Management(Profile managerProfile, Double payRate, int managerType) {
 
+        
+
         super(managerProfile, payRate);
 
+        int payPeriods = 26;
+        int managerBonus = 5000;
+        int departmentHeadBonus = 9500;
+        int directorBonus = 12000;
+
         if(managerType == 1){
-            this.managerCompensation = (double) 5000/26;
+            this.managerCompensation = (double) managerBonus/payPeriods;
         }else if(managerType == 2){
-            this.managerCompensation = (double) 9500/26;
+            this.managerCompensation = (double) departmentHeadBonus/payPeriods;
         }else{
-            this.managerCompensation = (double) 12000/26;
+            this.managerCompensation = (double) directorBonus/payPeriods;
         }
     }
 
