@@ -12,16 +12,19 @@ public class Date implements Comparable<Date> {
     private int day;
     private int year;
 
+    /**
+     * 
+     */
     public Date(String date) { //Creates date object from input String
-        /*
-            String date - String with form mm/dd/yyyy
-         */
-
         String [] tokens = date.split("/");
         this.month = Integer.valueOf(tokens[0]);
         this.day = Integer.valueOf(tokens[1]);
         this.year = Integer.valueOf(tokens[2]);
     }
+
+    /**
+     * 
+     */
     public Date() { //return today’s date
         Calendar calendar = Calendar.getInstance();
 
@@ -30,21 +33,30 @@ public class Date implements Comparable<Date> {
         day = calendar.get(Calendar.DAY_OF_MONTH);
     }
 
-    //Getter method for year
+    /**
+     * 
+     */
     public int getYear() {
         return year;
     }
 
-    //Getter method for month
+    /**
+     * 
+     */
     public int getMonth() {
         return month;
     }
 
-    //Getter method for day
+    /**
+     * 
+     */
     public int getDay(){
         return day;
     }
 
+    /**
+     * 
+     */
     @Override
     public int compareTo(Date date) { //return 1, 0, or -1
         if(date.getYear() > this.year){
@@ -68,6 +80,9 @@ public class Date implements Comparable<Date> {
         return 0;
     }
 
+    /**
+     * 
+     */
     public boolean isValid() {
         if(year < 1900 || year > 2021){
             return false;
@@ -105,6 +120,9 @@ public class Date implements Comparable<Date> {
         return true;
     }
 
+    /**
+     * 
+     */
     private boolean isLeapYear(int year){
         if(year < 1 || year > 9999){
             return false;
@@ -121,6 +139,9 @@ public class Date implements Comparable<Date> {
         return false;
     }
 
+    /**
+     * 
+     */
     public static void main(String[] args){
 
         //Test bed for Date

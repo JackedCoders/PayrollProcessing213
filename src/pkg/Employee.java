@@ -13,18 +13,30 @@ public class Employee {
     private Double payRate;
     private Double payments;
 
+    /**
+     * 
+     */
     public Profile getProfile() {
         return this.employeeProfile;
     }
     
+    /**
+     * 
+     */
     public void setProfile(Profile profile){
         this.employeeProfile = profile;
     }
 
+    /**
+     * 
+     */
     public double getPayments(){
         return this.payments;
     }
 
+    /**
+     * 
+     */
     public void setPayments(double payments){
         this.payments = payments;
     }
@@ -33,26 +45,41 @@ public class Employee {
         return this.payRate;
     }
 
+    /**
+     * 
+     */
     public void setPayRate(double payRate){
         this.payRate = payRate;
     }
 
+    /**
+     * 
+     */
     public Employee(Profile employeeProfile, Double payRate){
         this.employeeProfile = employeeProfile;
         this.payRate = payRate;
         this.payments = (double) 0;
     }
 
+    /**
+     * 
+     */
     public Employee(){
 
     }
 
+    /**
+     * 
+     */
     @Override
     public String toString(){
 
         return employeeProfile.toString();
     }
 
+    /**
+     * 
+     */
     @Override
     public boolean equals(Object obj){
         Employee newEmployee;

@@ -8,9 +8,13 @@ import java.util.Scanner;
 
 public class PayrollProcessing {
 
+    Company newCompany = new Company();
+    /**
+     * 
+     */
     public void run(){
 
-        Company newCompany = new Company();
+        
 
         Scanner inputScanner = new Scanner(System.in);
 
@@ -43,11 +47,16 @@ public class PayrollProcessing {
                 if(dateHired == null){
                     continue;
                 }
-                Double payRate = Double.parseDouble(tokens[4]);
+                Double payRate = (double) -1;
+                try{
+                    payRate = Double.parseDouble(tokens[4]);
+                }catch(Exception e){
+                    
+                }
 
                 // Add a part time employee
                 if(type == 'P'){
-
+                    addParttime(name, department, dateHired, payRate);
                 }
 
                 // Add a full time employee
@@ -57,7 +66,17 @@ public class PayrollProcessing {
 
                 // Add a Manager
                 else{
-                    int managerType = Integer.parseInt(tokens[5]);
+                    int managerType;
+                    try{
+                        managerType = Integer.parseInt(tokens[5]);
+                    }catch(Exception e){
+                        System.out.println("Invalid management code.");
+                        continue;
+                    }
+                    
+                    if(!validateManagementCode(managerType)){
+                        continue;
+                    }
                     addManager(name, department, dateHired, payRate, managerType);
                 }
             }
@@ -83,8 +102,6 @@ public class PayrollProcessing {
             
             // Input is Calculate
             else if(input.equals("C")){
-                
-
                 calculatePayments();
             }
 
@@ -105,7 +122,8 @@ public class PayrollProcessing {
                     continue;
                 }
 
-                //newCompany.setHours(dateHired);
+
+                
 
             }
 
@@ -135,35 +153,58 @@ public class PayrollProcessing {
         }
     }
 
+    /**
+     * 
+     */
     private void addParttime(String name, String department, Date date, Double payRate){
 
 
     }
 
+    /**
+     * 
+     */
     private void addFulltime(String name, String department, Date date, Double payRate){
 
+        Profile fulltimeProfile = new Profile(name, department, date);
+        newCompany.add(new Fulltime(fulltimeProfile,payRate));
 
     }
 
+    /**
+     * 
+     */
     private void addManager(String name, String department, Date date, Double payRate, int managerType){
         
         Profile managerProfile = new Profile(name, department, date);
+        newCompany.add(new Management(managerProfile,payRate, managerType));
     }
 
+    /**
+     * 
+     */
     private void removeEmployee(){
 
     }
 
+    /**
+     * 
+     */
     private void calculatePayments(){
 
     }
 
-
+    /**
+    * 
+    */
     private void invalidCommand(String input){
 
         System.out.println("Command '"+input+"' not supported!");
     }
 
+    /**
+     * 
+     */
     private boolean validateDepartment(String department){
 
         if(department.equals("CS") || department.equals("ECE") || department.equals("IT")){
@@ -174,6 +215,9 @@ public class PayrollProcessing {
         
     }
 
+    /**
+     * 
+     */
     private Date validateDate(String date){
         Date newDate = new Date(date);
         try{
@@ -188,5 +232,16 @@ public class PayrollProcessing {
         }
             
         return newDate;
+    }
+
+    private boolean validateManagementCode(int managementCode){
+
+        if(managementCode  == 1 || managementCode == 2 || managementCode == 3){
+            return true;
+        }
+        else{
+            System.out.println("Invalid management code.");
+            return false;
+        }
     }
 }

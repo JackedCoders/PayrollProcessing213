@@ -18,7 +18,10 @@ public class Company {
     }
 
     /**
-     * 
+     * Returns the index of the employee that we are trying to find in the empList array of type Employee
+     * acts as an helper method for other methods to identy certain employees
+     * @param employee
+     * @return returns the index of employee parameter if found, returns -1 otherwise
      */
     private int find(Employee employee){
 
@@ -31,11 +34,12 @@ public class Company {
     }
 
     /**
-     * 
-     * 
+     * Automatically grows the capacity of array to hold empoyees by 
+     * 4 using the method grow() below. Creating a new instance of type Employee
+     * and growing the capacity by 4.
      */
     private void grow(){
-        Employee [] newList = new Employee[emplist.length+4];
+        Employee [] newList = new Employee[emplist.length+ 4];
         for(int i =0; i< emplist.length; i++){
             newList[i] = emplist[i];
         }
@@ -97,6 +101,10 @@ public class Company {
      * 
      */
     public void print(){
+        if(numEmployees == 0){
+            System.out.println("Employee database is empty.");
+        }
+
         for(int i=0; i<numEmployees; i++){
             System.out.println(emplist[i].toString());
         }
@@ -106,15 +114,21 @@ public class Company {
      * 
      */
     public void printByDepartment(){
+        if(numEmployees == 0){
+            System.out.println("Employee database is empty.");
+        }
 
     }
 
     /**
      * 
-     * 
      */
     public void printByDate(){
+        if(numEmployees == 0){
+            System.out.println("Employee database is empty.");
+        }
             
+
     }
 
 

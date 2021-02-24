@@ -9,32 +9,48 @@ public class Profile {
     private String department; //department code: CS, ECE, IT
     private Date dateHired;
 
-    // Constructor
+    /**
+     * 
+     */
     public Profile(String name, String department, Date dateHired){
         this.name = name;
         this.department = department;
         this.dateHired = dateHired;
     }
 
-    //Getter method for name of employee
+    /**
+     * 
+     */
     public String getName(){
         return this.name;
     }
 
+    /**
+     * 
+     */
     public String getDepartment(){
         return this.department;
     }
 
+    /**
+     * 
+     */
     public Date getDateHired() { 
         return this.dateHired; 
     }
 
+    /**
+     * 
+     */
     @Override
     public String toString() {
 
         return name + "::" + department + "::" + dateHired.toString() + "::";
     }
 
+    /**
+     * 
+     */
     @Override
     public boolean equals(Object obj) { //compare name, department and dateHired
         Profile newProfile;
