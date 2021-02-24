@@ -9,7 +9,6 @@ package pkg;
 
 public class Management extends Fulltime{
 
-    private int managerType;
     private Double managerCompensation;
 
     /**
@@ -18,7 +17,6 @@ public class Management extends Fulltime{
     public Management(Profile managerProfile, Double payRate, int managerType) {
 
         super(managerProfile, payRate);
-        this.managerType = managerType;
 
         if(managerType == 1){
             this.managerCompensation = (double) 5000/26;
@@ -29,7 +27,12 @@ public class Management extends Fulltime{
         }
     }
 
-    public void calculatePayments(){
+    public double getManagerCompensation(){
+        return managerCompensation;
+    }
+
+    @Override
+    public void calculatePayment(){
 
         super.setPayments( super.getPayRate()/26 + managerCompensation );
     }
@@ -39,7 +42,7 @@ public class Management extends Fulltime{
      */
     @Override
     public String toString(){
-        return null;
+        return super.toString() + "::Manager Compensation $" + managerCompensation;
     }
 
     /**
@@ -51,6 +54,13 @@ public class Management extends Fulltime{
         try{
             newManagement = (Management) obj;
         }catch(Exception e){
+            return false;
+        }
+        
+        if(!super.getProfile().equals(newManagement.getProfile())){
+            return false;
+        }
+        if(managerCompensation != newManagement.getManagerCompensation()){
             return false;
         }
 

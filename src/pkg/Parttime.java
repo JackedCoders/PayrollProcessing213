@@ -26,7 +26,8 @@ public class Parttime extends Employee{
     /**
      * 
      */
-    public void calculatePayments(){
+    @Override
+    public void calculatePayment(){
 
         if(hoursWorked <= 80){
 

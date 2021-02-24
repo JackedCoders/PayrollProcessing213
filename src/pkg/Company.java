@@ -91,7 +91,7 @@ public class Company {
             return false;
         }
 
-        
+
         return true;
     }
 
@@ -100,12 +100,15 @@ public class Company {
      * 
      */
     public void processPayments(){
-            
+        for(int i = 0; i < numEmployees; i++){
+
+            emplist[i].calculatePayment();
+        }
     }
 
     /**
-     * 
-     * 
+     * prints the contents (last name, firstname, department, earnings) 
+     * of emplist array of type Employee using the .toString() method
      */
     public void print(){
         if(numEmployees == 0){

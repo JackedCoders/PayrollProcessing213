@@ -151,13 +151,15 @@ public class PayrollProcessing {
                 continue;
             }
         }
+        inputScanner.close();
     }
 
     /**
      * 
      */
     private void addParttime(String name, String department, Date date, Double payRate){
-
+        Profile parttimeProfile = new Profile(name, department, date);
+        newCompany.add(new Parttime(parttimeProfile,payRate));
 
     }
 
@@ -184,14 +186,14 @@ public class PayrollProcessing {
      * 
      */
     private void removeEmployee(){
-
+        //newCompany.remove(employeeProfile);
     }
 
     /**
      * 
      */
     private void calculatePayments(){
-
+        newCompany.processPayments();
     }
 
     /**
@@ -219,7 +221,7 @@ public class PayrollProcessing {
      * 
      */
     private Date validateDate(String date){
-        Date newDate = new Date(date);
+        Date newDate;
         try{
             newDate = new Date(date);
         }catch(Exception e){

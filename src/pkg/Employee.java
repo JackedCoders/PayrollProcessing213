@@ -41,15 +41,25 @@ public class Employee {
         this.payments = payments;
     }
 
+    /**
+     * 
+     */
     public double getPayRate(){
         return this.payRate;
     }
 
     /**
-     * 
+     * setter method that initializes the parameter payRate to the instance variable in Employee
+     * class 
+     * @param payRate value of type double that gets passed in as a parameter to this method and allows
+     * us to initiaize it to instance variable payRate of this class
      */
     public void setPayRate(double payRate){
         this.payRate = payRate;
+    }
+
+    public void calculatePayment(){
+
     }
 
     /**
@@ -62,10 +72,10 @@ public class Employee {
     }
 
     /**
-     * 
+     * Default constructor
      */
     public Employee(){
-
+        
     }
 
     /**

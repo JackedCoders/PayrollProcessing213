@@ -14,7 +14,8 @@ public class Fulltime extends Employee{
         super(fulltimeProfile, payRate);
     }
 
-    public void calculatePayments(){
+    @Override
+    public void calculatePayment(){
 
         super.setPayments( super.getPayRate()/26 );
     }
@@ -24,7 +25,7 @@ public class Fulltime extends Employee{
      */
     @Override
     public String toString(){
-        return super.toString();
+        return super.toString() + "FULL TIME::Annual Salary $" + super.getPayRate();
     }
 
     /**
