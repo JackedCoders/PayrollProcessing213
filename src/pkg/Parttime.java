@@ -6,7 +6,7 @@ package pkg;
 
 public class Parttime extends Employee{
 
-    int hoursWorked; // Hours worked this period
+    private int hoursWorked; // Hours worked this period
 
     public Parttime(Profile parttimeProfile, Double payRate) {
         super(parttimeProfile, payRate);
@@ -15,6 +15,11 @@ public class Parttime extends Employee{
 
     public void setHoursWorked(int hoursWorked) {
         this.hoursWorked = hoursWorked;
+    }
+
+    public void calculatePayments(){
+
+        super.setPayments(super.getPayRate() * hoursWorked);
     }
 
     @Override

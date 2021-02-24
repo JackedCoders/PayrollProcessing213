@@ -14,7 +14,27 @@ public class Employee {
     private Double payments;
 
     public Profile getProfile() {
-        return employeeProfile;
+        return this.employeeProfile;
+    }
+    
+    public void setProfile(Profile profile){
+        this.employeeProfile = profile;
+    }
+
+    public double getPayments(){
+        return this.payments;
+    }
+
+    public void setPayments(double payments){
+        this.payments = payments;
+    }
+
+    public double getPayRate(){
+        return this.payRate;
+    }
+
+    public void setPayRate(double payRate){
+        this.payRate = payRate;
     }
 
     public Employee(Profile employeeProfile, Double payRate){
