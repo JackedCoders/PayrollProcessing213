@@ -26,15 +26,22 @@ public class PayrollProcessing {
                 char type = tokens[0].charAt(0);
                 String name = tokens[1];
                 String department = tokens[2];
-                String date = tokens[3];
+                Date date = new Date(tokens[3]);
                 Double payRate = Double.parseDouble(tokens[4]);
 
-                // Check if normal employee
-                if(type == 'P' || type == 'F'){
-                    addEmployee(name, department, date, payRate);
+                // Add a part time employee
+                if(type == 'P'){
+
                 }
+
+                // Add a full time employee
+                if(type == 'F'){
+
+                }
+
                 // Add a Manager
                 else{
+                    int managerType = Integer.parseInt(tokens[5]);
 
                 }
             }
@@ -85,7 +92,12 @@ public class PayrollProcessing {
         }
     }
 
-    private void addEmployee(char type, String name, String department, String date, Double payRate){
+    private void addParttime(String name, String department, Date date, Double payRate){
+
+
+    }
+
+    private void addFulltime(String name, String department, Date date, Double payRate){
 
 
     }
@@ -108,7 +120,15 @@ public class PayrollProcessing {
         System.out.println("Command '"+input+"' not supported!");
     }
 
-    private boolean validDepartment(String department){
+    private boolean validateName(String name){
+        String [] names = name.split(",");
+        if(names.length != 2){
+            return false;
+        }
+        return true;
+    }
+
+    private boolean validateDepartment(String department){
 
         if(department.equals("CS") || department.equals("ECE") || department.equals("IT")){
             return true;
@@ -116,7 +136,7 @@ public class PayrollProcessing {
         return false;
     }
 
-    private boolean validDate(Date date){
+    private boolean validateDate(Date date){
         if(date.isValid()) {
             return true;
         }

@@ -2,11 +2,18 @@ package pkg;
 
 public class Employee {
 
-    Profile employeeProfile;
-    int payRate;
+    private Profile employeeProfile;
+    private Double payRate;
+    private Double payments;
 
-    public Employee(Profile employeeProfile, int payRate){
+    public Profile getProfile() {
+        return employeeProfile;
+    }
 
+    public Employee(Profile employeeProfile, Double payRate){
+        this.employeeProfile = employeeProfile;
+        this.payRate = payRate;
+        this.payments = (double) 0;
     }
 
     public Employee(){
@@ -16,7 +23,7 @@ public class Employee {
     @Override
     public String toString(){
 
-        return null;
+        return employeeProfile.toString();
     }
 
     @Override
@@ -28,7 +35,7 @@ public class Employee {
             return false;
         }
 
-        if(!employeeProfile.equals(newEmployee)){
+        if(!employeeProfile.equals(newEmployee.getProfile())){
             return false;
         }
         return true;

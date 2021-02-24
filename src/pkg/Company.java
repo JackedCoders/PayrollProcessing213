@@ -26,6 +26,7 @@ public class Company {
         }
         this.emplist = newList;
     }
+
     public void add(Employee employee){
         if(numEmployees == emplist.length){
             this.grow();
@@ -34,6 +35,7 @@ public class Company {
         numEmployees++;
 
     }
+
     public boolean remove(Employee employee){
         int index = find(employee);
         if(index == -1){
@@ -41,6 +43,9 @@ public class Company {
         }
 
         emplist[index] = null;
+        for(int i = index; i < numEmployees; i++){
+            emplist[i] = emplist[i+1];
+        }
         numEmployees--;
 
         return true;
@@ -51,8 +56,11 @@ public class Company {
     public void processPayments(){
             
     }
-    public void print(){
 
+    public void print(){
+        for(int i=0; i<numEmployees; i++){
+            System.out.println(emplist[i].toString());
+        }
     }
     public void printByDepartment(){
 
