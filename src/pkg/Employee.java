@@ -74,7 +74,7 @@ public class Employee {
     @Override
     public String toString(){
 
-        return employeeProfile.toString();
+        return employeeProfile.toString() + "Payment $" + payments + "::";
     }
 
     /**

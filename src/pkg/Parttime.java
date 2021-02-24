@@ -44,7 +44,7 @@ public class Parttime extends Employee{
      */
     @Override
     public String toString(){
-        return null;
+        return super.toString() + ;
     }
 
     /**

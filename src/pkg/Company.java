@@ -10,7 +10,8 @@ public class Company {
     private int numEmployees;
 
     /**
-     * 
+     * Constructor for Company class that initializes our private instances emplist of type Employee to 4
+     * and numEmployee of type int to 0
      */
     public Company(){
         this.emplist = new Employee[4];
