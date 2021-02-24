@@ -20,13 +20,16 @@ public class Fulltime extends Employee {
         super.setPayments(super.getPayRate() / payPeriods);
     }
 
-    public Profile getProfile() {
+    public void calculatePayment(double payment){
+        super.setPayments( payment );
+    }
+    
 
+    public Profile getProfile() {
         return super.getProfile();
     }
 
     public void setPayments(double payment){
-
         super.setPayments(payment);
     }
 

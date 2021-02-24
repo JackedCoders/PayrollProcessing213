@@ -40,7 +40,7 @@ public class Management extends Fulltime {
     @Override
     public void calculatePayment() {
         final int PAY_PERIODS = 26; // # of biweekly payment periods per year
-        super.setPayments(super.getPayRate() / PAY_PERIODS + managerCompensation);
+        super.calculatePayment(super.getPayRate() / PAY_PERIODS + managerCompensation);
     }
 
     /**
