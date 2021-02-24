@@ -4,7 +4,7 @@
  */
 package pkg;
 
-public class Fulltime extends Employee{
+public class Fulltime extends Employee {
 
     /**
      * 
@@ -15,16 +15,21 @@ public class Fulltime extends Employee{
     }
 
     @Override
-    public void calculatePayment(){
+    public void calculatePayment() {
+        int payPeriods = 26;
+        super.setPayments(super.getPayRate() / payPeriods);
+    }
 
-        super.setPayments( super.getPayRate()/26 );
+    public Profile getProfile() {
+
+        return super.getProfile();
     }
 
     /**
      * 
      */
     @Override
-    public String toString(){
+    public String toString() {
         return super.toString() + "FULL TIME::Annual Salary $" + super.getPayRate();
     }
 
@@ -32,18 +37,15 @@ public class Fulltime extends Employee{
      * 
      */
     @Override
-    public boolean equals(Object obj){
+    public boolean equals(Object obj) {
         Fulltime newFulltime;
-        try{
+        try {
             newFulltime = (Fulltime) obj;
-        }catch(Exception e){
+        } catch (Exception e) {
             return false;
         }
 
-        if(!super.getProfile().equals(newFulltime.getProfile())){ 
-            return false;
-        }
-        if(super.getPayRate() != newFulltime.getPayRate()){ 
+        if (!super.getProfile().equals(newFulltime.getProfile())) {
             return false;
         }
 

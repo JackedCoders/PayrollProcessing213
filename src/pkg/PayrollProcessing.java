@@ -9,30 +9,29 @@ import java.util.Scanner;
 public class PayrollProcessing {
 
     Company newCompany = new Company();
+
     /**
      * 
      */
-    public void run(){
-
-        
+    public void run() {
 
         Scanner inputScanner = new Scanner(System.in);
 
         String input = "";
-        while(!input.equals("Q")){
+        while (!input.equals("Q")) {
             input = inputScanner.nextLine();
-            String [] tokens = input.split(" ");
+            String[] tokens = input.split(" ");
 
             // Input is empty
-            if(input.equals("") || input == null){
+            if (input.equals("") || input == null) {
                 invalidCommand(input);
                 continue;
             }
 
             // Input is Add
-            else if(tokens[0].equals("AM") || tokens[0].equals("AP") || tokens[0].equals("AF")){
+            else if (tokens[0].equals("AM") || tokens[0].equals("AP") || tokens[0].equals("AF")) {
 
-                if(tokens.length != 5 && tokens.length != 6){
+                if (tokens.length != 5 && tokens.length != 6) {
                     invalidCommand(input);
                     continue;
                 }
@@ -40,123 +39,124 @@ public class PayrollProcessing {
                 char type = tokens[0].charAt(0);
                 String name = tokens[1];
                 String department = tokens[2];
-                if(!validateDepartment(department)){
+                if (!validateDepartment(department)) {
                     continue;
                 }
                 Date dateHired = validateDate(tokens[3]);
-                if(dateHired == null){
+                if (dateHired == null) {
                     continue;
                 }
                 Double payRate = (double) -1;
-                try{
+                try {
                     payRate = Double.parseDouble(tokens[4]);
-                }catch(Exception e){
-                    
+                } catch (Exception e) {
+
                 }
 
                 // Add a part time employee
-                if(type == 'P'){
+                if (type == 'P') {
                     addParttime(name, department, dateHired, payRate);
                 }
 
                 // Add a full time employee
-                if(type == 'F'){
+                if (type == 'F') {
                     addFulltime(name, department, dateHired, payRate);
                 }
 
                 // Add a Manager
-                else{
+                else {
                     int managerType;
-                    try{
+                    try {
                         managerType = Integer.parseInt(tokens[5]);
-                    }catch(Exception e){
+                    } catch (Exception e) {
                         System.out.println("Invalid management code.");
                         continue;
                     }
-                    
-                    if(!validateManagementCode(managerType)){
+
+                    if (!validateManagementCode(managerType)) {
                         continue;
                     }
                     addManager(name, department, dateHired, payRate, managerType);
                 }
             }
-            
-            // Input is Remove
-            else if(tokens[0].equals("R")){
 
-                if(tokens.length != 4){
+            // Input is Remove
+            else if (tokens[0].equals("R")) {
+
+                if (tokens.length != 4) {
                     invalidCommand(input);
                     continue;
                 }
 
                 String name = tokens[1];
                 String department = tokens[2];
-                if(!validateDepartment(department)){
+                if (!validateDepartment(department)) {
                     continue;
                 }
                 Date dateHired = validateDate(tokens[3]);
-                if(dateHired == null){
+                if (dateHired == null) {
                     continue;
                 }
+
+                removeEmployee(name, department, dateHired);
             }
-            
+
             // Input is Calculate
-            else if(input.equals("C")){
+            else if (input.equals("C")) {
                 calculatePayments();
             }
 
             // Input is Set Hours
-            else if(tokens[0].equals("S")){
-                if(tokens.length != 5){
+            else if (tokens[0].equals("S")) {
+                if (tokens.length != 5) {
                     invalidCommand(input);
                     continue;
                 }
 
                 String name = tokens[1];
                 String department = tokens[2];
-                if(!validateDepartment(department)){
+                if (!validateDepartment(department)) {
                     continue;
                 }
                 Date dateHired = validateDate(tokens[3]);
-                if(dateHired == null){
+                if (dateHired == null) {
                     continue;
                 }
                 int hours = -1;
-                try{
+                try {
                     hours = Integer.parseInt(tokens[4]);
-                }catch(Exception e){
+                } catch (Exception e) {
                     invalidCommand(input);
                     continue;
-                }     
-                if(!validateHours(hours)){
+                }
+                if (!validateHours(hours)) {
                     continue;
                 }
 
-                //Profile setProfile = new Profile(name, department, dateHired);
-                //int index = newCompany.find(new Pa)
+                setHours(name, department, dateHired, hours);
 
             }
 
             // Input is Print
-            else if(input.equals("PA") || input.equals("PH") || input.equals("PD")){
+            else if (input.equals("PA") || input.equals("PH") || input.equals("PD")) {
 
-                if(input.equals("PA")){
+                if (input.equals("PA")) {
                     newCompany.print();
-                }else if(input.equals("PH")){
+                } else if (input.equals("PH")) {
                     newCompany.printByDate();
-                }else if(input.equals("PD")){
+                } else if (input.equals("PD")) {
                     newCompany.printByDepartment();
                 }
             }
 
             // Input is Quit
-            else if(input.equals("Q")){
+            else if (input.equals("Q")) {
                 System.out.println("Payroll Processing completed.");
                 break;
             }
 
             // Invalid input
-            else{
+            else {
                 invalidCommand(input);
                 continue;
             }
@@ -167,102 +167,125 @@ public class PayrollProcessing {
     /**
      * 
      */
-    private void addParttime(String name, String department, Date date, Double payRate){
+    private void addParttime(String name, String department, Date date, Double payRate) {
         Profile parttimeProfile = new Profile(name, department, date);
-        newCompany.add(new Parttime(parttimeProfile,payRate));
+        newCompany.add(new Parttime(parttimeProfile, payRate));
 
     }
 
     /**
      * 
      */
-    private void addFulltime(String name, String department, Date date, Double payRate){
+    private void addFulltime(String name, String department, Date date, Double payRate) {
 
         Profile fulltimeProfile = new Profile(name, department, date);
-        newCompany.add(new Fulltime(fulltimeProfile,payRate));
+        newCompany.add(new Fulltime(fulltimeProfile, payRate));
 
     }
 
     /**
      * 
      */
-    private void addManager(String name, String department, Date date, Double payRate, int managerType){
-        
+    private void addManager(String name, String department, Date date, Double payRate, int managerType) {
+
         Profile managerProfile = new Profile(name, department, date);
-        newCompany.add(new Management(managerProfile,payRate, managerType));
+        newCompany.add(new Management(managerProfile, payRate, managerType));
+    }
+
+    /*
+     *
+     */
+    private void setHours(String name, String department, Date date, int hours) {
+
+        Profile setProfile = new Profile(name, department, date);
+        Employee setEmployee = new Employee(setProfile, 0.0);
+
+        boolean hoursSet = newCompany.setHours(setEmployee, hours);
+        if(!hoursSet) {
+
+        }else{
+            System.out.println("Working hours set.");
+        }
     }
 
     /**
      * 
      */
-    private void removeEmployee(){
-        //newCompany.remove(employeeProfile);
+    private void removeEmployee(String name, String department, Date date){
+        Profile removeProfile = new Profile(name, department, date);
+        Employee removeEmployee = new Employee(removeProfile, 0.0);
+
+        boolean removed = newCompany.remove(removeEmployee);
+        if(!removed){
+            System.out.println("Employee does not exist.");
+        }else{
+            System.out.println("Employee removed.");
+        }
     }
 
     /**
      * 
      */
-    private void calculatePayments(){
+    private void calculatePayments() {
         newCompany.processPayments();
     }
 
     /**
     * 
     */
-    private void invalidCommand(String input){
+    private void invalidCommand(String input) {
 
-        System.out.println("Command '"+input+"' not supported!");
+        System.out.println("Command '" + input + "' not supported!");
     }
 
     /**
      * 
      */
-    private boolean validateDepartment(String department){
+    private boolean validateDepartment(String department) {
 
-        if(department.equals("CS") || department.equals("ECE") || department.equals("IT")){
+        if (department.equals("CS") || department.equals("ECE") || department.equals("IT")) {
             return true;
         }
-        System.out.println("'"+department+"' is not a valid department code.");
+        System.out.println("'" + department + "' is not a valid department code.");
         return false;
-        
+
     }
 
     /**
      * 
      */
-    private Date validateDate(String date){
+    private Date validateDate(String date) {
         Date newDate;
-        try{
+        try {
             newDate = new Date(date);
-        }catch(Exception e){
+        } catch (Exception e) {
             System.out.println(date + " is not a valid date!");
             return null;
         }
-        if(!newDate.isValid()){
+        if (!newDate.isValid()) {
             System.out.println(date + " is not a valid date!");
             return null;
         }
-            
+
         return newDate;
     }
 
-    private boolean validateManagementCode(int managementCode){
-
-        if(managementCode  == 1 || managementCode == 2 || managementCode == 3){
+    private boolean validateManagementCode(int managementCode) {
+        final int[] code = {1,2,3};
+        if (managementCode == 1 || managementCode == 2 || managementCode == 3) {
             return true;
-        }
-        else{
+        } else {
             System.out.println("Invalid management code.");
             return false;
         }
     }
 
-    private boolean validateHours (int hours){
-        if(hours < 0){
+    private boolean validateHours(int hours) {
+        if (hours < 0) {
             System.out.println("Working hours cannot be negative.");
             return false;
         }
-        if(hours > 100){
+        if (hours > 100) {
             System.out.println("Invalid Hours: over 100.");
             return false;
         }

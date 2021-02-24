@@ -5,14 +5,14 @@
 package pkg;
 
 public class Profile {
-    private String name; //employee’s name in the form “lastname,firstname” 
-    private String department; //department code: CS, ECE, IT
+    private String name; // employee’s name in the form “lastname,firstname”
+    private String department; // department code: CS, ECE, IT
     private Date dateHired;
 
     /**
      * 
      */
-    public Profile(String name, String department, Date dateHired){
+    public Profile(String name, String department, Date dateHired) {
         this.name = name;
         this.department = department;
         this.dateHired = dateHired;
@@ -21,22 +21,22 @@ public class Profile {
     /**
      * 
      */
-    public String getName(){
+    public String getName() {
         return this.name;
     }
 
     /**
      * 
      */
-    public String getDepartment(){
+    public String getDepartment() {
         return this.department;
     }
 
     /**
      * 
      */
-    public Date getDateHired() { 
-        return this.dateHired; 
+    public Date getDateHired() {
+        return this.dateHired;
     }
 
     /**
@@ -52,20 +52,20 @@ public class Profile {
      * 
      */
     @Override
-    public boolean equals(Object obj) { //compare name, department and dateHired
+    public boolean equals(Object obj) { // compare name, department and dateHired
         Profile newProfile;
-        try{
+        try {
             newProfile = (Profile) obj;
-        }catch(Exception e){
+        } catch (Exception e) {
             return false;
         }
-        if(!name.equals(newProfile.getName())){
+        if (!name.equals(newProfile.getName())) {
             return false;
         }
-        if(!department.equals(newProfile.getDepartment())){
+        if (!department.equals(newProfile.getDepartment())) {
             return false;
         }
-        if(dateHired.compareTo(newProfile.getDateHired()) != 0){
+        if (dateHired.compareTo(newProfile.getDateHired()) != 0) {
             return false;
         }
 
