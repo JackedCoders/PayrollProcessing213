@@ -1,3 +1,7 @@
+/**
+ * 
+ * @author Manveer Singh, Prasish Sriram
+ */
 package pkg;
 
 import java.util.Scanner;
@@ -26,7 +30,13 @@ public class PayrollProcessing {
                 char type = tokens[0].charAt(0);
                 String name = tokens[1];
                 String department = tokens[2];
-                Date date = new Date(tokens[3]);
+                if(!validateDepartment(department)){
+                    continue;
+                }
+                Date dateHired = validateDate(tokens[3]);
+                if(dateHired == null){
+                    continue;
+                }
                 Double payRate = Double.parseDouble(tokens[4]);
 
                 // Add a part time employee
@@ -36,13 +46,13 @@ public class PayrollProcessing {
 
                 // Add a full time employee
                 if(type == 'F'){
-
+                    addFulltime(name, department, dateHired, payRate);
                 }
 
                 // Add a Manager
                 else{
                     int managerType = Integer.parseInt(tokens[5]);
-
+                    addManager(name, department, dateHired, payRate, managerType);
                 }
             }
             
@@ -50,7 +60,13 @@ public class PayrollProcessing {
             else if(tokens[0].equals("R")){
                 String name = tokens[1];
                 String department = tokens[2];
-                String date = tokens[3];
+                if(!validateDepartment(department)){
+                    continue;
+                }
+                Date dateHired = validateDate(tokens[3]);
+                if(dateHired == null){
+                    continue;
+                }
             }
             
             // Input is Calculate
@@ -62,6 +78,9 @@ public class PayrollProcessing {
             else if(tokens[0].equals("S")){
                 String name = tokens[0];
                 String department = tokens[1];
+                if(!validateDepartment(department)){
+                    continue;
+                }
                 String date = tokens[2];
 
             }
@@ -102,8 +121,9 @@ public class PayrollProcessing {
 
     }
 
-    private void addManager(String name, String department, String date, Double payRate){
-
+    private void addManager(String name, String department, Date date, Double payRate, int managerType){
+        
+        Profile managerProfile = new Profile(name, department, date);
     }
 
     private void removeEmployee(){
@@ -133,13 +153,24 @@ public class PayrollProcessing {
         if(department.equals("CS") || department.equals("ECE") || department.equals("IT")){
             return true;
         }
+        System.out.println("'"+department+"' is not a valid department code.");
         return false;
+        
     }
 
-    private boolean validateDate(Date date){
-        if(date.isValid()) {
-            return true;
+    private Date validateDate(String date){
+        Date newDate = new Date(date);
+        try{
+            newDate = new Date(date);
+        }catch(Exception e){
+            System.out.println(date + " is not a valid date!");
+            return null;
         }
-        return false;
+        if(!newDate.isValid()){
+            System.out.println(date + " is not a valid date!");
+            return null;
+        }
+            
+        return newDate;
     }
 }

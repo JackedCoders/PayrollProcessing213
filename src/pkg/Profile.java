@@ -1,3 +1,7 @@
+/**
+ * 
+ * @author Manveer Singh, Prasish Sriram
+ */
 package pkg;
 
 public class Profile {

@@ -1,9 +1,17 @@
+/**
+ * 
+ * 
+ * @author Manveer Singh, Prasish Sriram
+ */
 package pkg;
 
 public class Company {
     private Employee [] emplist;
     private int numEmployees;
 
+    /**
+     * 
+     */
     public Company(){
         this.emplist = new Employee[4];
         this.numEmployees = 0;
@@ -66,7 +74,7 @@ public class Company {
 
     }
     public void printByDate(){
-
+            
     }
 
 
