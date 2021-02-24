@@ -17,7 +17,7 @@ public class Company {
         this.emplist = new Employee[4];
         this.numEmployees = 0;
     }
-    
+
     public int getNumEmployees() {
         return this.numEmployees;
     }
@@ -33,8 +33,8 @@ public class Company {
      */
     private int find(Employee employee) {
 
-        for (int i = 0; i < emplist.length; i++) {
-            if (emplist[i].equals(employee)) {
+        for (int i = 0; i <= numEmployees; i++) {
+            if (emplist[i] != null && emplist[i].equals(employee)) {
                 return i;
             }
         }
@@ -62,7 +62,10 @@ public class Company {
      */
     public boolean add(Employee employee) {
         int index = find(employee);
+        
         if(index != -1){ return false; }
+
+        
         if (numEmployees == emplist.length) {
             this.grow();
         }
@@ -136,7 +139,9 @@ public class Company {
         }
         System.out.println("--Printing earning statements for all employees--");
         for (int i = 0; i <= numEmployees; i++) {
-            System.out.println(emplist[i].toString());
+            if(emplist[i] != null){
+                System.out.println(emplist[i].toString());
+            }
         }
     }
 
@@ -148,7 +153,7 @@ public class Company {
             System.out.println("Employee database is empty.");
             return;
         }
-        System.out.println("--Printing earning statements by department--");
+        
 
         //Sort emplist by department
         for(int i = 1; i<=numEmployees; i++){
@@ -161,7 +166,12 @@ public class Company {
             }
             emplist[j+1] = key;
         }
-
+        System.out.println("--Printing earning statements by department--");
+        for (int i = 0; i <= numEmployees; i++) {
+            if(emplist[i] != null){
+                System.out.println(emplist[i].toString());
+            }
+        }
     }
 
     /**
@@ -187,7 +197,9 @@ public class Company {
 
         System.out.println("--Printing earning statements by date hired--");
         for (int i = 0; i <= numEmployees; i++) {
-            System.out.println(emplist[i].toString());
+            if(emplist[i] != null){
+                System.out.println(emplist[i].toString());
+            }
         }
 
     }

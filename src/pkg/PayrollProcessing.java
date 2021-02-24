@@ -37,7 +37,7 @@ public class PayrollProcessing {
                     continue;
                 }
 
-                char type = tokens[0].charAt(0);
+                char type = tokens[0].charAt(1);
                 String name = tokens[1];
                 String department = tokens[2];
                 if (!validateDepartment(department)) {
@@ -79,6 +79,8 @@ public class PayrollProcessing {
                     }
                     addManager(name, department, dateHired, payRate, managerType);
                 }
+
+                System.out.println("# OF EMPLOYEES "+ newCompany.getNumEmployees());
             }
 
             // Input is Remove
@@ -125,6 +127,7 @@ public class PayrollProcessing {
                     continue;
                 }
                 int hours = -1;
+
                 try {
                     hours = Integer.parseInt(tokens[4]);
                 } catch (Exception e) {
