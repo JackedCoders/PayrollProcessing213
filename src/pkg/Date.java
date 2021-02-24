@@ -139,6 +139,31 @@ public class Date implements Comparable<Date> {
         return false;
     }
 
+    @Override
+    public boolean equals(Object obj){
+        Date other;
+        try{
+            other = (Date) obj;
+        }catch(Exception e){
+            return false;
+        }
+
+        if(this.compareTo(other) == 0){
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public String toString(){
+
+        String mm = String.valueOf(month);
+        String dd = String.valueOf(day);
+        String yyyy = String.valueOf(year);
+        
+        return mm + "/" + dd + "/" + yyyy;
+    }
+
     /**
      * 
      */

@@ -7,6 +7,8 @@
 
 package pkg;
 
+import java.text.*;
+
 public class Employee {
 
     private Profile employeeProfile;
@@ -85,8 +87,10 @@ public class Employee {
      */
     @Override
     public String toString() {
+        NumberFormat numberFormat = new DecimalFormat("###,###,###.00");
+        String paymentStr = numberFormat.format(payments);
 
-        return employeeProfile.toString() + "Payment $" + payments + "::";
+        return employeeProfile.toString() + "Payment $" + paymentStr + "::";
     }
 
     /**

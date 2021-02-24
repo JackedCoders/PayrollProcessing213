@@ -38,7 +38,7 @@ public class Company {
                 return i;
             }
         }
-        return -1;
+        return -1;''
     }
 
     /**
@@ -109,6 +109,11 @@ public class Company {
             return false;
         }
 
+        try{
+            //emplist[index].setHours(hoursWorked);
+        }catch(Exception e){
+
+        }
         //try{
 
         //}catch(){
@@ -123,8 +128,9 @@ public class Company {
      */
     public void processPayments() {
         for (int i = 0; i < numEmployees; i++) {
-
-            emplist[i].calculatePayment();
+            if(emplist[i] != null){
+                emplist[i].calculatePayment();
+            }
         }
     }
 
