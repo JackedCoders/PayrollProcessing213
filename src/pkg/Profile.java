@@ -7,10 +7,13 @@ package pkg;
 public class Profile {
     private String name; // employee’s name in the form “lastname,firstname”
     private String department; // department code: CS, ECE, IT
-    private Date dateHired;
+    private Date dateHired; // date the employee was hired
 
     /**
-     * 
+     * constructor for class Profile that takes in 3 parameters and initializes the parameters to instance variables
+     * @param name 
+     * @param department 
+     * @param dateHired
      */
     public Profile(String name, String department, Date dateHired) {
         this.name = name;
@@ -19,33 +22,34 @@ public class Profile {
     }
 
     /**
-     * 
+     * getter method that returns the instance variable name of the class Profile when called
      */
     public String getName() {
         return this.name;
     }
 
     /**
-     * 
+     * getter method that returns the instance variable department of the class Profile when called
      */
     public String getDepartment() {
         return this.department;
     }
 
     /**
-     * 
+     * getter method that returns the private instance variabe dateHired when called
      */
     public Date getDateHired() {
         return this.dateHired;
     }
 
     /**
-     * 
+     * method that overrides the toString() method in Employee class. 
+     * returns a String with instance variables name, department, and dateHired of class Profile.
      */
     @Override
     public String toString() {
 
-        return name + "::" + department + "::" + dateHired.toString() + "::";
+        return this.name + "::" + this.department + "::" + dateHired.toString() + "::";
     }
 
     /**

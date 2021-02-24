@@ -25,6 +25,11 @@ public class Fulltime extends Employee {
         return super.getProfile();
     }
 
+    public void setPayments(double payment){
+
+        super.setPayments(payment);
+    }
+
     /**
      * 
      */

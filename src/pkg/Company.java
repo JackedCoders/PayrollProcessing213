@@ -17,6 +17,10 @@ public class Company {
         this.emplist = new Employee[4];
         this.numEmployees = 0;
     }
+    
+    public int getNumEmployees() {
+        return this.numEmployees;
+    }
 
     /**
      * Returns the index of the employee that we are trying to find in the empList
@@ -54,14 +58,17 @@ public class Company {
      * removes a certain employee from the array empList based on user input
      * 
      * @param employee object of class Employee.
-     * @return returns true if
+     * @return returns true if employee added successfully, false if employee is already in list
      */
-    public void add(Employee employee) {
+    public boolean add(Employee employee) {
+        int index = find(employee);
+        if(index != -1){ return false; }
         if (numEmployees == emplist.length) {
             this.grow();
         }
         emplist[numEmployees + 1] = employee;
         numEmployees++;
+        return true;
 
     }
 
@@ -69,7 +76,7 @@ public class Company {
      * removes a certain employee from the array empList based on user input
      * 
      * @param employee object of class Employee.
-     * @return returns true if
+     * @return returns true if removed successfully, false if employee cannot be found
      */
     public boolean remove(Employee employee) {
         int index = find(employee);
@@ -99,8 +106,11 @@ public class Company {
             return false;
         }
 
+        //try{
 
+        //}catch(){
 
+        //}
         return true;
     }
 
@@ -122,9 +132,10 @@ public class Company {
     public void print() {
         if (numEmployees == 0) {
             System.out.println("Employee database is empty.");
+            return;
         }
         System.out.println("--Printing earning statements for all employees--");
-        for (int i = 0; i < numEmployees; i++) {
+        for (int i = 0; i <= numEmployees; i++) {
             System.out.println(emplist[i].toString());
         }
     }
@@ -135,8 +146,21 @@ public class Company {
     public void printByDepartment() {
         if (numEmployees == 0) {
             System.out.println("Employee database is empty.");
+            return;
         }
         System.out.println("--Printing earning statements by department--");
+
+        //Sort emplist by department
+        for(int i = 1; i<=numEmployees; i++){
+            Employee key = emplist[i];
+            int j = i - 1;
+
+            while(j>= 0 && emplist[j].getProfile().getDepartment().compareTo(key.getProfile().getDepartment()) > 0){
+                emplist[j+1] = emplist[j];
+                j = j - 1;
+            }
+            emplist[j+1] = key;
+        }
 
     }
 
@@ -146,8 +170,25 @@ public class Company {
     public void printByDate() {
         if (numEmployees == 0) {
             System.out.println("Employee database is empty.");
+            return;
         }
+
+        //Sort emplist by dateHired
+        for(int i = 1; i<numEmployees; i++){
+            Employee key = emplist[i];
+            int j = i - 1;
+
+            while(j>= 0 && emplist[j].getProfile().getDateHired().compareTo(key.getProfile().getDateHired()) > 0){
+                emplist[j+1] = emplist[j];
+                j = j - 1;
+            }
+            emplist[j+1] = key;
+        }
+
         System.out.println("--Printing earning statements by date hired--");
+        for (int i = 0; i <= numEmployees; i++) {
+            System.out.println(emplist[i].toString());
+        }
 
     }
 

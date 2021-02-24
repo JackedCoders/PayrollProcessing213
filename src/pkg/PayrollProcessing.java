@@ -18,6 +18,7 @@ public class PayrollProcessing {
         Scanner inputScanner = new Scanner(System.in);
 
         String input = "";
+        System.out.println("Payroll Processing starts.");
         while (!input.equals("Q")) {
             input = inputScanner.nextLine();
             String[] tokens = input.split(" ");
@@ -50,7 +51,7 @@ public class PayrollProcessing {
                 try {
                     payRate = Double.parseDouble(tokens[4]);
                 } catch (Exception e) {
-
+                    continue;
                 }
 
                 // Add a part time employee
@@ -59,12 +60,12 @@ public class PayrollProcessing {
                 }
 
                 // Add a full time employee
-                if (type == 'F') {
+                else if (type == 'F') {
                     addFulltime(name, department, dateHired, payRate);
                 }
 
                 // Add a Manager
-                else {
+                else if (type == 'M') {
                     int managerType;
                     try {
                         managerType = Integer.parseInt(tokens[5]);
@@ -104,6 +105,7 @@ public class PayrollProcessing {
             // Input is Calculate
             else if (input.equals("C")) {
                 calculatePayments();
+                
             }
 
             // Input is Set Hours
@@ -169,8 +171,12 @@ public class PayrollProcessing {
      */
     private void addParttime(String name, String department, Date date, Double payRate) {
         Profile parttimeProfile = new Profile(name, department, date);
-        newCompany.add(new Parttime(parttimeProfile, payRate));
-
+        boolean added = newCompany.add(new Parttime(parttimeProfile, payRate));
+        if(!added){
+            System.out.println("Employee is already in the list.");
+        }else{
+            System.out.println("Employee added.");
+        }
     }
 
     /**
@@ -179,8 +185,12 @@ public class PayrollProcessing {
     private void addFulltime(String name, String department, Date date, Double payRate) {
 
         Profile fulltimeProfile = new Profile(name, department, date);
-        newCompany.add(new Fulltime(fulltimeProfile, payRate));
-
+        boolean added = newCompany.add(new Fulltime(fulltimeProfile, payRate));
+        if(!added){
+            System.out.println("Employee is already in the list.");
+        }else{
+            System.out.println("Employee added.");
+        }
     }
 
     /**
@@ -189,7 +199,12 @@ public class PayrollProcessing {
     private void addManager(String name, String department, Date date, Double payRate, int managerType) {
 
         Profile managerProfile = new Profile(name, department, date);
-        newCompany.add(new Management(managerProfile, payRate, managerType));
+        boolean added = newCompany.add(new Management(managerProfile, payRate, managerType));
+        if(!added){
+            System.out.println("Employee is already in the list.");
+        }else{
+            System.out.println("Employee added.");
+        }
     }
 
     /*
@@ -202,7 +217,7 @@ public class PayrollProcessing {
 
         boolean hoursSet = newCompany.setHours(setEmployee, hours);
         if(!hoursSet) {
-
+            System.out.println("Employee does not exist.");
         }else{
             System.out.println("Working hours set.");
         }
@@ -228,6 +243,7 @@ public class PayrollProcessing {
      */
     private void calculatePayments() {
         newCompany.processPayments();
+        System.out.println("Calculation of employee payments is done.");
     }
 
     /**
@@ -271,7 +287,7 @@ public class PayrollProcessing {
     }
 
     private boolean validateManagementCode(int managementCode) {
-        final int[] code = {1,2,3};
+        
         if (managementCode == 1 || managementCode == 2 || managementCode == 3) {
             return true;
         } else {

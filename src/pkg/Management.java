@@ -57,6 +57,7 @@ public class Management extends Fulltime {
         if(managementCode == 3){
             return super.toString() + "::Director Compensation $" + managerCompensation;
         }
+        return null; // return for compilation purposes
     }
 
     /**
