@@ -27,6 +27,12 @@ public class PayrollProcessing {
 
             // Input is Add
             else if(tokens[0].equals("AM") || tokens[0].equals("AP") || tokens[0].equals("AF")){
+
+                if(tokens.length != 5 && tokens.length != 6){
+                    invalidCommand(input);
+                    continue;
+                }
+
                 char type = tokens[0].charAt(0);
                 String name = tokens[1];
                 String department = tokens[2];
@@ -58,6 +64,12 @@ public class PayrollProcessing {
             
             // Input is Remove
             else if(tokens[0].equals("R")){
+
+                if(tokens.length != 4){
+                    invalidCommand(input);
+                    continue;
+                }
+
                 String name = tokens[1];
                 String department = tokens[2];
                 if(!validateDepartment(department)){
@@ -71,17 +83,29 @@ public class PayrollProcessing {
             
             // Input is Calculate
             else if(input.equals("C")){
+                
+
                 calculatePayments();
             }
 
             // Input is Set Hours
             else if(tokens[0].equals("S")){
+                if(tokens.length != 5){
+                    invalidCommand(input);
+                    continue;
+                }
+
                 String name = tokens[0];
                 String department = tokens[1];
                 if(!validateDepartment(department)){
                     continue;
                 }
-                String date = tokens[2];
+                Date dateHired = validateDate(tokens[2]);
+                if(dateHired == null){
+                    continue;
+                }
+
+                //newCompany.setHours(dateHired);
 
             }
 
@@ -138,14 +162,6 @@ public class PayrollProcessing {
     private void invalidCommand(String input){
 
         System.out.println("Command '"+input+"' not supported!");
-    }
-
-    private boolean validateName(String name){
-        String [] names = name.split(",");
-        if(names.length != 2){
-            return false;
-        }
-        return true;
     }
 
     private boolean validateDepartment(String department){

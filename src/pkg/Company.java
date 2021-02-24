@@ -17,6 +17,9 @@ public class Company {
         this.numEmployees = 0;
     }
 
+    /**
+     * 
+     */
     private int find(Employee employee){
 
         for(int i = 0; i<emplist.length; i++){
@@ -27,6 +30,10 @@ public class Company {
         return -1;
     }
 
+    /**
+     * 
+     * 
+     */
     private void grow(){
         Employee [] newList = new Employee[emplist.length+4];
         for(int i =0; i< emplist.length; i++){
@@ -35,6 +42,11 @@ public class Company {
         this.emplist = newList;
     }
 
+    /**
+    * removes a certain employee from the array empList based on user input
+    * @param employee object of class Employee. 
+    * @return returns true if 
+    */
     public void add(Employee employee){
         if(numEmployees == emplist.length){
             this.grow();
@@ -44,6 +56,11 @@ public class Company {
 
     }
 
+    /**
+    * removes a certain employee from the array empList based on user input
+    * @param employee object of class Employee. 
+    * @return returns true if 
+    */
     public boolean remove(Employee employee){
         int index = find(employee);
         if(index == -1){
@@ -58,21 +75,44 @@ public class Company {
 
         return true;
     }
-    public boolean setHours(Employee employee){
+   /**
+    * Assigns working hours for a particular part-time employee
+    * @param employee object of class Employee. hoursWorked field will be assigned here
+    * @return false if setHours() fails, true if setHours() succeeds
+    */
+    public boolean setHours(Employee employee, int hoursWorked){
         return true;
     }
+
+    /**
+     * 
+     * 
+     */
     public void processPayments(){
             
     }
 
+    /**
+     * 
+     * 
+     */
     public void print(){
         for(int i=0; i<numEmployees; i++){
             System.out.println(emplist[i].toString());
         }
     }
+
+    /**
+     * 
+     */
     public void printByDepartment(){
 
     }
+
+    /**
+     * 
+     * 
+     */
     public void printByDate(){
             
     }

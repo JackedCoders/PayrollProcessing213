@@ -13,6 +13,10 @@ public class Parttime extends Employee{
         this.hoursWorked = 0;
     }
 
+    public void setHoursWorked(int hoursWorked) {
+        this.hoursWorked = hoursWorked;
+    }
+
     @Override
     public String toString(){
         return null;
