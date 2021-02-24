@@ -29,6 +29,14 @@ public class PayrollProcessing {
                 String date = tokens[3];
                 Double payRate = Double.parseDouble(tokens[4]);
 
+                // Check if normal employee
+                if(type == 'P' || type == 'F'){
+                    addEmployee(name, department, date, payRate);
+                }
+                // Add a Manager
+                else{
+
+                }
             }
             
             // Input is Remove
@@ -51,6 +59,18 @@ public class PayrollProcessing {
 
             }
 
+            // Input is Print
+            else if(input.equals("PA") || input.equals("PH") || input.equals("PD")){
+
+                if(input.equals("PA")){
+                    newCompany.print();
+                }else if(input.equals("PH")){
+                    newCompany.printByDate();
+                }else if(input.equals("PD")){
+                    newCompany.printByDepartment();
+                }
+            }
+
             // Input is Quit
             else if(input.equals("Q")){
                 System.out.println("Payroll Processing completed.");
@@ -65,12 +85,12 @@ public class PayrollProcessing {
         }
     }
 
-    private void addEmployee(String name, String department, String date, Double payRate){
+    private void addEmployee(char type, String name, String department, String date, Double payRate){
 
 
     }
 
-    private void addManager(){
+    private void addManager(String name, String department, String date, Double payRate){
 
     }
 
