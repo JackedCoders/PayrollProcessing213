@@ -13,7 +13,7 @@ public class Date implements Comparable<Date> {
     private int year;
 
     /**
-     * constructor that allows us to split the date into months, days, and year
+     * Constructor that allows us to split the date into months, days, and year
      * using the .split() and passing in our delimiter "/" token[0] is the
      * month...for example (01/02/2020.. 01 is extracted) token[1] is set to the
      * date passed. (01/02/2020..02 is extracted) token 2 is set to year. For
@@ -154,7 +154,17 @@ public class Date implements Comparable<Date> {
     }
 
     /**
+     * method that determines if the year (parameter) is a leap year based on the
+     * conditions: Step 1. If the year is evenly divisible by 4, go to step 2.
+     * Otherwise, go to step 5. Step 2. If the year is evenly divisible by 100, go
+     * to step 3. Otherwise, go to step 4. Step 3. If the year is evenly divisible
+     * by 400, go to step 4. Otherwise, go to step 5. Step 4. The year is a leap
+     * year. Step 5. The year is not a leap year.
      * 
+     * @param year that gets passed on when isLeapYear is invoked. Allows us to
+     *             determine if the year is a leapYear
+     * @return true if year is a leap year based on conditions specified, false
+     *         otherwise.
      */
     private boolean isLeapYear(int year) {
         if (year < 1 || year > 9999) {
@@ -172,6 +182,11 @@ public class Date implements Comparable<Date> {
         return false;
     }
 
+    /**
+     * checks to see if the dates are equal
+     * 
+     * @return true if dates are equal, false otherwise
+     */
     @Override
     public boolean equals(Object obj) {
         Date other;
@@ -187,6 +202,14 @@ public class Date implements Comparable<Date> {
         return false;
     }
 
+    /**
+     * toString() method that overrides the original toString() method and allows to
+     * initialize variables(mm,dd,yyyy) to values of private instane variables of
+     * month,day, year using the valueOf method
+     * 
+     * @return a string that concatenates the month, day and year together in
+     *         mm/dd/yyyy format
+     */
     @Override
     public String toString() {
 
@@ -196,15 +219,4 @@ public class Date implements Comparable<Date> {
 
         return mm + "/" + dd + "/" + yyyy;
     }
-
-    /**
-     * 
-     */
-    public static void main(String[] args) {
-
-        // Test bed for Date
-        Date date1 = new Date("2/21/2021");
-        System.out.println(date1.isValid());
-    }
-
 }
