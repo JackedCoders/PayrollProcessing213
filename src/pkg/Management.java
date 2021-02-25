@@ -33,10 +33,17 @@ public class Management extends Fulltime {
         }
     }
 
+    /**
+     * 
+     * @return
+     */
     public double getManagerCompensation() {
         return managerCompensation;
     }
 
+    /**
+     * 
+     */
     @Override
     public void calculatePayment() {
         final int PAY_PERIODS = 26; // # of biweekly payment periods per year
@@ -48,13 +55,13 @@ public class Management extends Fulltime {
      */
     @Override
     public String toString() {
-        if(managementCode == 1){
+        if (managementCode == 1) {
             return super.toString() + "::Manager Compensation $" + managerCompensation;
         }
-        if(managementCode == 2){
+        if (managementCode == 2) {
             return super.toString() + "::DepartmentHead Compensation $" + managerCompensation;
         }
-        if(managementCode == 3){
+        if (managementCode == 3) {
             return super.toString() + "::Director Compensation $" + managerCompensation;
         }
         return null; // return for compilation purposes

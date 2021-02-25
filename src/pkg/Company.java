@@ -5,7 +5,6 @@
  */
 package pkg;
 
-//check 
 public class Company {
     private Employee[] emplist;
     private int numEmployees;
@@ -19,6 +18,10 @@ public class Company {
         this.numEmployees = 0;
     }
 
+    /**
+     * 
+     * @return
+     */
     public int getNumEmployees() {
         return this.numEmployees;
     }

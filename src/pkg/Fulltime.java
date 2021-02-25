@@ -14,22 +14,34 @@ public class Fulltime extends Employee {
         super(fulltimeProfile, payRate);
     }
 
+    /**
+     * 
+     */
     @Override
     public void calculatePayment() {
         int payPeriods = 26;
         super.setPayments(super.getPayRate() / payPeriods);
     }
 
-    public void calculatePayment(double payment){
-        super.setPayments( payment );
+    /**
+     * 
+     * @param payment
+     */
+    public void calculatePayment(double payment) {
+        super.setPayments(payment);
     }
-    
 
+    /**
+     * 
+     */
     public Profile getProfile() {
         return super.getProfile();
     }
 
-    public void setPayments(double payment){
+    /**
+     * 
+     */
+    public void setPayments(double payment) {
         super.setPayments(payment);
     }
 

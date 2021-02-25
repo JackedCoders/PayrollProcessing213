@@ -62,6 +62,9 @@ public class Employee {
         this.payRate = payRate;
     }
 
+    /**
+     * 
+     */
     public void calculatePayment() {
 
     }

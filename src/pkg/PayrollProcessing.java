@@ -80,7 +80,7 @@ public class PayrollProcessing {
                     addManager(name, department, dateHired, payRate, managerType);
                 }
 
-                System.out.println("# OF EMPLOYEES "+ newCompany.getNumEmployees());
+                System.out.println("# OF EMPLOYEES " + newCompany.getNumEmployees());
             }
 
             // Input is Remove
@@ -107,7 +107,7 @@ public class PayrollProcessing {
             // Input is Calculate
             else if (input.equals("C")) {
                 calculatePayments();
-                
+
             }
 
             // Input is Set Hours
@@ -175,9 +175,9 @@ public class PayrollProcessing {
     private void addParttime(String name, String department, Date date, Double payRate) {
         Profile parttimeProfile = new Profile(name, department, date);
         boolean added = newCompany.add(new Parttime(parttimeProfile, payRate));
-        if(!added){
+        if (!added) {
             System.out.println("Employee is already in the list.");
-        }else{
+        } else {
             System.out.println("Employee added.");
         }
     }
@@ -189,9 +189,9 @@ public class PayrollProcessing {
 
         Profile fulltimeProfile = new Profile(name, department, date);
         boolean added = newCompany.add(new Fulltime(fulltimeProfile, payRate));
-        if(!added){
+        if (!added) {
             System.out.println("Employee is already in the list.");
-        }else{
+        } else {
             System.out.println("Employee added.");
         }
     }
@@ -203,9 +203,9 @@ public class PayrollProcessing {
 
         Profile managerProfile = new Profile(name, department, date);
         boolean added = newCompany.add(new Management(managerProfile, payRate, managerType));
-        if(!added){
+        if (!added) {
             System.out.println("Employee is already in the list.");
-        }else{
+        } else {
             System.out.println("Employee added.");
         }
     }
@@ -219,9 +219,9 @@ public class PayrollProcessing {
         Employee setEmployee = new Employee(setProfile, 0.0);
 
         boolean hoursSet = newCompany.setHours(setEmployee, hours);
-        if(!hoursSet) {
+        if (!hoursSet) {
             System.out.println("Employee does not exist.");
-        }else{
+        } else {
             System.out.println("Working hours set.");
         }
     }
@@ -229,14 +229,14 @@ public class PayrollProcessing {
     /**
      * 
      */
-    private void removeEmployee(String name, String department, Date date){
+    private void removeEmployee(String name, String department, Date date) {
         Profile removeProfile = new Profile(name, department, date);
         Employee removeEmployee = new Employee(removeProfile, 0.0);
 
         boolean removed = newCompany.remove(removeEmployee);
-        if(!removed){
+        if (!removed) {
             System.out.println("Employee does not exist.");
-        }else{
+        } else {
             System.out.println("Employee removed.");
         }
     }
@@ -289,8 +289,11 @@ public class PayrollProcessing {
         return newDate;
     }
 
+    /**
+     * 
+     */
     private boolean validateManagementCode(int managementCode) {
-        
+
         if (managementCode == 1 || managementCode == 2 || managementCode == 3) {
             return true;
         } else {
@@ -299,6 +302,9 @@ public class PayrollProcessing {
         }
     }
 
+    /**
+     * 
+     */
     private boolean validateHours(int hours) {
         if (hours < 0) {
             System.out.println("Working hours cannot be negative.");
