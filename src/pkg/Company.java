@@ -5,6 +5,7 @@
  */
 package pkg;
 
+//check 
 public class Company {
     private Employee[] emplist;
     private int numEmployees;
@@ -58,14 +59,16 @@ public class Company {
      * removes a certain employee from the array empList based on user input
      * 
      * @param employee object of class Employee.
-     * @return returns true if employee added successfully, false if employee is already in list
+     * @return returns true if employee added successfully, false if employee is
+     *         already in list
      */
     public boolean add(Employee employee) {
         int index = find(employee);
-        
-        if(index != -1){ return false; }
 
-        
+        if (index != -1) {
+            return false;
+        }
+
         if (numEmployees == emplist.length) {
             this.grow();
         }
@@ -79,7 +82,8 @@ public class Company {
      * removes a certain employee from the array empList based on user input
      * 
      * @param employee object of class Employee.
-     * @return returns true if removed successfully, false if employee cannot be found
+     * @return returns true if removed successfully, false if employee cannot be
+     *         found
      */
     public boolean remove(Employee employee) {
         int index = find(employee);
@@ -109,16 +113,16 @@ public class Company {
             return false;
         }
 
-        try{
-            //emplist[index].setHours(hoursWorked);
-        }catch(Exception e){
+        try {
+            // emplist[index].setHours(hoursWorked);
+        } catch (Exception e) {
 
         }
-        //try{
+        // try{
 
-        //}catch(){
+        // }catch(){
 
-        //}
+        // }
         return true;
     }
 
@@ -128,7 +132,7 @@ public class Company {
      */
     public void processPayments() {
         for (int i = 0; i < numEmployees; i++) {
-            if(emplist[i] != null){
+            if (emplist[i] != null) {
                 emplist[i].calculatePayment();
             }
         }
@@ -145,7 +149,7 @@ public class Company {
         }
         System.out.println("--Printing earning statements for all employees--");
         for (int i = 0; i <= numEmployees; i++) {
-            if(emplist[i] != null){
+            if (emplist[i] != null) {
                 System.out.println(emplist[i].toString());
             }
         }
@@ -159,22 +163,21 @@ public class Company {
             System.out.println("Employee database is empty.");
             return;
         }
-        
 
-        //Sort emplist by department
-        for(int i = 1; i<=numEmployees; i++){
+        // Sort emplist by department
+        for (int i = 1; i <= numEmployees; i++) {
             Employee key = emplist[i];
             int j = i - 1;
 
-            while(j>= 0 && emplist[j].getProfile().getDepartment().compareTo(key.getProfile().getDepartment()) > 0){
-                emplist[j+1] = emplist[j];
+            while (j >= 0 && emplist[j].getProfile().getDepartment().compareTo(key.getProfile().getDepartment()) > 0) {
+                emplist[j + 1] = emplist[j];
                 j = j - 1;
             }
-            emplist[j+1] = key;
+            emplist[j + 1] = key;
         }
         System.out.println("--Printing earning statements by department--");
         for (int i = 0; i <= numEmployees; i++) {
-            if(emplist[i] != null){
+            if (emplist[i] != null) {
                 System.out.println(emplist[i].toString());
             }
         }
@@ -189,21 +192,21 @@ public class Company {
             return;
         }
 
-        //Sort emplist by dateHired
-        for(int i = 1; i<numEmployees; i++){
+        // Sort emplist by dateHired
+        for (int i = 1; i < numEmployees; i++) {
             Employee key = emplist[i];
             int j = i - 1;
 
-            while(j>= 0 && emplist[j].getProfile().getDateHired().compareTo(key.getProfile().getDateHired()) > 0){
-                emplist[j+1] = emplist[j];
+            while (j >= 0 && emplist[j].getProfile().getDateHired().compareTo(key.getProfile().getDateHired()) > 0) {
+                emplist[j + 1] = emplist[j];
                 j = j - 1;
             }
-            emplist[j+1] = key;
+            emplist[j + 1] = key;
         }
 
         System.out.println("--Printing earning statements by date hired--");
         for (int i = 0; i <= numEmployees; i++) {
-            if(emplist[i] != null){
+            if (emplist[i] != null) {
                 System.out.println(emplist[i].toString());
             }
         }
