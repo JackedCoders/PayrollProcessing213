@@ -12,7 +12,7 @@ public class Management extends Fulltime {
     private Double managerCompensation;
 
     /**
-     * 
+     * Constructor method that a
      */
     public Management(Profile managerProfile, Double payRate, int managerType) {
 
