@@ -53,6 +53,9 @@ public class Parttime extends Employee {
     }
 
     /**
+     * Allows us to return part employee profiles along with their compensation .
+     * The method allows us to concatenate employee data along with hourly rate and
+     * return it as a string object
      * 
      * @return a string object consisting of part time employee hourly rate along
      *         with how many hours he/she worked per pay period
@@ -64,7 +67,9 @@ public class Parttime extends Employee {
     }
 
     /**
+     * checks to see if two part time profiles are equal to one another
      * 
+     * @return true if profiles match, false otherwise
      */
     @Override
     public boolean equals(Object obj) {
