@@ -1,4 +1,10 @@
 /**
+ * PayrollProcessing class is the main class that directly reads, writes and
+ * constantly performs a lot of computations for this project. It is the user
+ * interface class that calls different methods in Company to perform different
+ * actions like adding parttime, fulltime employees along with their differnt
+ * management roles. This class handles important methods like adding, removing,
+ * printing earning statements etc.
  * 
  * @author Manveer Singh, Prasish Sriram
  */
@@ -11,7 +17,9 @@ public class PayrollProcessing {
     Company newCompany = new Company();
 
     /**
-     * 
+     * method that reads from the console, performs calculations based on user input
+     * along with handling all of the exceptions and invalid data entries that get
+     * plugged in.
      */
     public void run() {
 

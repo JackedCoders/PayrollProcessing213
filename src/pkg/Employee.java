@@ -1,4 +1,3 @@
-
 /**
  * Employee class defines the most common data(such as payRate, payments and employeeProfile of type Profile) and operations(getters, setters, calculating payment for each employee based on their position - full time, part time, management etc) along with checking if the employee is the same based on their date for all employee type. This class also handles printing payments for each employeeProfile
  * 

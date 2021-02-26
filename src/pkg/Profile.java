@@ -1,6 +1,10 @@
 /**
- * Profile contains the most generic information about an employee's profile(name, department they work in, the date they were hired) along with a method equals() to
- * check if the profile exists already. Class also has a toString() method that returns an employee's name, dateHired along with department. 
+ * Profile contains the most generic information about an employee's
+ * profile(name, department they work in, the date they were hired) along with a
+ * method equals() to check if the profile exists already. Class also has a
+ * toString() method that returns an employee's name, dateHired along with
+ * department.
+ * 
  * @author Manveer Singh, Prasish Sriram
  */
 package pkg;

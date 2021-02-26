@@ -1,8 +1,15 @@
 /**
- * Array based container class that holds that array emplist and implements the entire employee database. The array emplist in this class contains instances of full-time, part-time, and management. Company also provides a variety of methods such as find() (to find a certain employee in the array and return ), grow(initial  capacity of of the container is 4, this method increases it by 4, processPayments() (which process payments for all employees) and other important programs like setHours, remove() etc. Company also controls the printing of earning statements, print by department and print by date hired.
+ * Array based container class that holds that array emplist and implements the
+ * entire employee database. The array emplist in this class contains instances
+ * of full-time, part-time, and management. Company also provides a variety of
+ * methods such as find() (to find a certain employee in the array and return ),
+ * grow(initial capacity of of the container is 4, this method increases it by
+ * 4, processPayments() (which process payments for all employees) and other
+ * important programs like setHours, remove() etc. Company also controls the
+ * printing of earning statements, print by department and print by date hired.
+ * 
  * @author Manveer Singh, Prasidh Sriram
  */
-
 package pkg;
 
 public class Company {
