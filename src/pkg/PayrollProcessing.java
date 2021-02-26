@@ -64,21 +64,35 @@ public class PayrollProcessing {
 
                 // Add a part time employee
                 if (type == 'P') {
+                    if(payRate < 0){
+                        System.out.println("Pay rate cannot be negative.");
+                        continue;
+                    }
                     addParttime(name, department, dateHired, payRate);
                 }
 
                 // Add a full time employee
                 else if (type == 'F') {
+                    if(payRate < 0){
+                        System.out.println("Salary cannot be negative.");
+                        continue;
+                    }
                     addFulltime(name, department, dateHired, payRate);
                 }
 
                 // Add a Manager
                 else if (type == 'M') {
+                    if(payRate < 0){
+                        System.out.println("Salary cannot be negative.");
+                        continue;
+                    }
+
                     int managerType;
                     try {
                         managerType = Integer.parseInt(tokens[5]);
                     } catch (Exception e) {
                         System.out.println("Invalid management code.");
+                        System.out.println("test1");
                         continue;
                     }
 
@@ -88,7 +102,7 @@ public class PayrollProcessing {
                     addManager(name, department, dateHired, payRate, managerType);
                 }
 
-                System.out.println("# OF EMPLOYEES " + newCompany.getNumEmployees());
+                //System.out.println("# OF EMPLOYEES " + newCompany.getNumEmployees());
             }
 
             // Input is Remove
@@ -306,6 +320,7 @@ public class PayrollProcessing {
             return true;
         } else {
             System.out.println("Invalid management code.");
+            System.out.println("test2");
             return false;
         }
     }

@@ -130,15 +130,14 @@ public class Company {
         }
 
         try {
-            // emplist[index].setHours(hoursWorked);
+            Parttime newParttime = (Parttime) emplist[index];
+            newParttime.setHoursWorked(hoursWorked);
+            
+            emplist[index] = newParttime;
         } catch (Exception e) {
-
+            return false;
         }
-        // try{
-
-        // }catch(){
-
-        // }
+        
         return true;
     }
 
@@ -149,10 +148,31 @@ public class Company {
      * Employee
      */
     public void processPayments() {
-        for (int i = 0; i < numEmployees; i++) {
+        for (int i = 0; i <= numEmployees; i++) {
+
             if (emplist[i] != null) {
-                emplist[i].calculatePayment();
+
+                if(emplist[i] instanceof Parttime) {
+                    Parttime newParttime = (Parttime) emplist[i];
+                    newParttime.calculatePayment();
+                    emplist[i] = newParttime;
+                    
+                }
+                if(emplist[i] instanceof Fulltime){
+                    Fulltime newFulltime = (Fulltime) emplist[i];
+                    newFulltime.calculatePayment();
+                    emplist[i] = newFulltime;
+                    
+                }
+                if(emplist[i] instanceof Management){
+                    Management newManagement = (Management) emplist[i];
+                    newManagement.calculatePayment();
+                    emplist[i] = newManagement;
+                    
+                }
+                
             }
+
         }
     }
 
@@ -192,7 +212,7 @@ public class Company {
             Employee key = emplist[i];
             int j = i - 1;
 
-            while (j >= 0 && emplist[j].getProfile().getDepartment().compareTo(key.getProfile().getDepartment()) > 0) {
+            while ((emplist[i] != null && emplist[j] != null) && j >= 0 && emplist[j].getProfile().getDepartment().compareTo(key.getProfile().getDepartment()) > 0) {
                 emplist[j + 1] = emplist[j];
                 j = j - 1;
             }
@@ -224,7 +244,7 @@ public class Company {
             Employee key = emplist[i];
             int j = i - 1;
 
-            while (j >= 0 && emplist[j].getProfile().getDateHired().compareTo(key.getProfile().getDateHired()) > 0) {
+            while ((emplist[i] != null && emplist[j] != null) && j >= 0 && emplist[j].getProfile().getDateHired().compareTo(key.getProfile().getDateHired()) > 0) {
                 emplist[j + 1] = emplist[j];
                 j = j - 1;
             }
