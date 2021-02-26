@@ -94,7 +94,7 @@ public class PayrollProcessing {
                     addManager(name, department, dateHired, payRate, managerType);
                 }
 
-                System.out.println("# OF EMPLOYEES " + newCompany.getNumEmployees());
+                //System.out.println("# OF EMPLOYEES " + newCompany.getNumEmployees());
             }
 
             // Input is Remove
