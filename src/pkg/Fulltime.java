@@ -49,6 +49,10 @@ public class Fulltime extends Employee {
         return super.getProfile();
     }
 
+    public double getPayRate(){
+        return super.getPayRate();
+    }
+
     /**
      * setter method that accepts a parameter of type double and assigns it to
      * setPayments in Employee profile (super class)
