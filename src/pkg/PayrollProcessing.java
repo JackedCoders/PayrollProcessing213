@@ -19,7 +19,8 @@ public class PayrollProcessing {
     /**
      * method that reads from the console, performs calculations based on user input
      * along with handling all of the exceptions and invalid data entries that get
-     * plugged in.
+     * plugged in. Different integer codes are inputted, based on that, the method
+     * is able to perform certain actions like add, remove etc.
      */
     public void run() {
 
@@ -64,7 +65,7 @@ public class PayrollProcessing {
 
                 // Add a part time employee
                 if (type == 'P') {
-                    if(payRate < 0){
+                    if (payRate < 0) {
                         System.out.println("Pay rate cannot be negative.");
                         continue;
                     }
@@ -73,7 +74,7 @@ public class PayrollProcessing {
 
                 // Add a full time employee
                 else if (type == 'F') {
-                    if(payRate < 0){
+                    if (payRate < 0) {
                         System.out.println("Salary cannot be negative.");
                         continue;
                     }
@@ -82,7 +83,7 @@ public class PayrollProcessing {
 
                 // Add a Manager
                 else if (type == 'M') {
-                    if(payRate < 0){
+                    if (payRate < 0) {
                         System.out.println("Salary cannot be negative.");
                         continue;
                     }
@@ -102,7 +103,7 @@ public class PayrollProcessing {
                     addManager(name, department, dateHired, payRate, managerType);
                 }
 
-                //System.out.println("# OF EMPLOYEES " + newCompany.getNumEmployees());
+                // System.out.println("# OF EMPLOYEES " + newCompany.getNumEmployees());
             }
 
             // Input is Remove
@@ -192,7 +193,14 @@ public class PayrollProcessing {
     }
 
     /**
+     * Method that adds part time employees to the database after retrieving their
+     * name, department they work in, date and the payr rate. If an employee already
+     * exists in database, prints a statement, otherwise "Emplooyee added."
      * 
+     * @param name       of the partime employee we want to add
+     * @param department they work in
+     * @param date       date in MM/DD/YYYY format
+     * @param payRate    how much the employee gets paid per pay period
      */
     private void addParttime(String name, String department, Date date, Double payRate) {
         Profile parttimeProfile = new Profile(name, department, date);
@@ -205,7 +213,14 @@ public class PayrollProcessing {
     }
 
     /**
+     * Method that adds full time employees to the database after retrieving their
+     * name, department they work in, date and the payr rate. If an employee already
+     * exists in database, prints a statement, otherwise "Emplooyee added."
      * 
+     * @param name       of the partime employee we want to add
+     * @param department they work in
+     * @param date       date in MM/DD/YYYY format
+     * @param payRate    how much the employee gets paid per pay period
      */
     private void addFulltime(String name, String department, Date date, Double payRate) {
 
@@ -219,7 +234,18 @@ public class PayrollProcessing {
     }
 
     /**
+     * Method that adds manager level full time employees to the database after
+     * retrieving their name, department they work in, date, payrate along with what
+     * type of full time employee they are (manager, department head, director). If
+     * an employee already exists in database, prints a statement, otherwise
+     * "Emplooyee added."
      * 
+     * @param name       of the partime employee we want to add
+     * @param department they work in
+     * @param date       date in MM/DD/YYYY format
+     * @param payRate    how much the employee gets paid per pay period
+     * @param managerTpe 1, 2 or 3 to correspond to manager, department head or
+     *                   director
      */
     private void addManager(String name, String department, Date date, Double payRate, int managerType) {
 
@@ -232,8 +258,14 @@ public class PayrollProcessing {
         }
     }
 
-    /*
-     *
+    /**
+     * setter method that assigns hours based on name, department, date, and the
+     * hours worked fields.
+     * 
+     * @param name       of the partime employee we want to add
+     * @param department they work in
+     * @param date       date in MM/DD/YYYY format
+     * @param hours      hours the employee has worked
      */
     private void setHours(String name, String department, Date date, int hours) {
 
@@ -272,15 +304,23 @@ public class PayrollProcessing {
     }
 
     /**
-    * 
-    */
+     * method that allows for printing a statement when the command is invalid from
+     * the user on the console
+     * 
+     * @param input the input from the user that's unsupported
+     */
     private void invalidCommand(String input) {
 
         System.out.println("Command '" + input + "' not supported!");
     }
 
     /**
+     * Only three types of departments allows, CS, ECE and IT. This method checks to
+     * see if the input from the user equals one of these, if not then it returns
+     * false
      * 
+     * @param department string type inputted by the user
+     * @return true if input is one of these departments, false otherwise
      */
     private boolean validateDepartment(String department) {
 
@@ -293,7 +333,10 @@ public class PayrollProcessing {
     }
 
     /**
+     * validates the input date read from the console.
      * 
+     * @param date string type inputted by the user
+     * @return returns the date that's valid, if not valid display a message
      */
     private Date validateDate(String date) {
         Date newDate;
