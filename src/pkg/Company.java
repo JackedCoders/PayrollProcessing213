@@ -141,27 +141,27 @@ public class Company {
      * Employee
      */
     public void processPayments() {
-        for (int i = 0; i < numEmployees; i++) {
+        for (int i = 0; i <= numEmployees; i++) {
 
             if (emplist[i] != null) {
 
                 if(emplist[i] instanceof Parttime) {
-                    /*Parttime newParttime = (Parttime) emplist[i];
+                    Parttime newParttime = (Parttime) emplist[i];
                     newParttime.calculatePayment();
-                    emplist[i] = newParttime;*/
-                    emplist[i].calculatePayment();
+                    emplist[i] = newParttime;
+                    
                 }
                 if(emplist[i] instanceof Fulltime){
-                    /*Fulltime newFulltime = (Fulltime) emplist[i];
+                    Fulltime newFulltime = (Fulltime) emplist[i];
                     newFulltime.calculatePayment();
-                    emplist[i] = newFulltime;*/
-                    emplist[i].calculatePayment();
+                    emplist[i] = newFulltime;
+                    
                 }
                 if(emplist[i] instanceof Management){
-                    /*Management newManagement = (Management) emplist[i];
+                    Management newManagement = (Management) emplist[i];
                     newManagement.calculatePayment();
-                    emplist[i] = newManagement;*/
-                    emplist[i].calculatePayment();
+                    emplist[i] = newManagement;
+                    
                 }
                 
             }
