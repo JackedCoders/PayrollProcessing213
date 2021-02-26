@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="902be5db-4c22-49f4-853f-231df2bcfe1b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/pkg/CompanyTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pkg/ManagementTest.java" beforeDir="false" />
+    <list default="true" id="902be5db-4c22-49f4-853f-231df2bcfe1b" name="Default Changelist" comment="test">
+      <change afterPath="$PROJECT_DIR$/src/pkg/ManagementTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pkg/CompanyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pkg/CompanyTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,6 +47,14 @@
     <property name="create.test.in.the.same.root" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="pkg" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="Date" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="pkg.Date" />
@@ -75,6 +84,14 @@
       <option name="presentableId" value="Default" />
       <updated>1613854915646</updated>
     </task>
+    <task id="LOCAL-00001" summary="test">
+      <created>1614309045291</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1614309045291</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -87,5 +104,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="test" />
+    <option name="LAST_COMMIT_MESSAGE" value="test" />
   </component>
 </project>

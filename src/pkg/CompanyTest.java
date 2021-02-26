@@ -1,18 +1,16 @@
 package pkg;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class CompanyTest {
 
-    @org.junit.jupiter.api.Test
-    void add() {
+    public void testAdd() {
+
     }
 
-    @org.junit.jupiter.api.Test
-    void remove() {
+    public void testRemove() {
+
     }
 
-    @org.junit.jupiter.api.Test
-    void setHours() {
+    public void testsetHours() {
+
     }
 }
