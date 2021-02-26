@@ -1,3 +1,7 @@
+/**
+ * 
+ * @author Manveer Singh, Prasidh Sriram
+ */
 package pkg;
 
 class CompanyTest {
