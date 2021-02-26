@@ -93,7 +93,6 @@ public class PayrollProcessing {
                         managerType = Integer.parseInt(tokens[5]);
                     } catch (Exception e) {
                         System.out.println("Invalid management code.");
-                        System.out.println("test1");
                         continue;
                     }
 
@@ -281,7 +280,12 @@ public class PayrollProcessing {
     }
 
     /**
+     * Method that removes employee from the database when given valid parameters
+     * like their name, department and date
      * 
+     * @param name       name of the employee to be removed
+     * @param department department they work in
+     * @param date       date
      */
     private void removeEmployee(String name, String department, Date date) {
         Profile removeProfile = new Profile(name, department, date);
@@ -296,7 +300,8 @@ public class PayrollProcessing {
     }
 
     /**
-     * 
+     * invokes processPayments from company class and calculates payments along with
+     * displaying a message
      */
     private void calculatePayments() {
         newCompany.processPayments();
@@ -355,7 +360,11 @@ public class PayrollProcessing {
     }
 
     /**
+     * validates the code for management level full time employees. Input must be 1
+     * for manager, 2 for department head, 3 for director
      * 
+     * @param managementCode input from the console to be validated
+     * @return true if valid input management code, false otherwise
      */
     private boolean validateManagementCode(int managementCode) {
 
@@ -363,13 +372,15 @@ public class PayrollProcessing {
             return true;
         } else {
             System.out.println("Invalid management code.");
-            System.out.println("test2");
             return false;
         }
     }
 
     /**
+     * validates the hours plugged in from the console.
      * 
+     * @param hours int value to be tested
+     * @return true if valid, false if < 0 or > 100 along with print statement.
      */
     private boolean validateHours(int hours) {
         if (hours < 0) {
