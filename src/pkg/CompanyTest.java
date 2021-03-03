@@ -23,4 +23,8 @@ class CompanyTest {
     public void testsetHours() {
 
     }
+
+    public void calculateTest(){
+        
+    }
 }

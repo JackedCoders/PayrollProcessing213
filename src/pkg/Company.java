@@ -84,7 +84,7 @@ public class Company {
             return false;
         }
 
-        if (numEmployees == emplist.length) {
+        if (numEmployees+1 == emplist.length) {
             this.grow();
         }
         emplist[numEmployees + 1] = employee;
